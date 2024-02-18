@@ -590,6 +590,15 @@
             size: 200, 400  
             pos_hint: {'center_x': 0.9, 'center_y': 0.15}
 
+        Label:
+            id: boas_vindas
+            text: "[b]Bem vindo coletor![\b]"
+            markup: True
+            color: 0,0,0,1
+            font_size: 24
+            pos_hint={'center_x': 0.5, 'center_y': 0.24}
+
+
 <Solicitacoes>:
     FloatLayout:
         canvas.before:
@@ -821,7 +830,14 @@
             size_hint: None, None
             size: 200, 400  
             pos_hint: {'center_x': 0.9, 'center_y': 0.15}
-
+                    
+        Label:
+            id: boas_vindas
+            text: "[b]Bem vindo coletor![\b]"
+            markup: True
+            color: 0,0,0,1
+            font_size: 24
+            pos_hint={'center_x': 0.5, 'center_y': 0.24}
 
 <Area_descarte>:
     FloatLayout:

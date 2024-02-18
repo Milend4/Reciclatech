@@ -27,12 +27,11 @@ db = firebase.database()
 Builder.load_file('ReciclatechApp.kv')
     
 Window.size = (430, 600)
-#passo 1: criar um caminho para cadastro ou login para o coletor
-#passo 2: fazer o login do coletor
+
 class Login_coletor(Screen):
 
-    def _init_(self, **kwargs):
-        super(Login_coletor, self)._init_(**kwargs)
+    def __init__(self, **kwargs):
+        super(Login_coletor, self).__init__(**kwargs)
         self.app = MDApp.get_running_app()
 
     def cadastrar_coletor(self):
@@ -53,8 +52,8 @@ class Login_coletor(Screen):
 
 class Login_usuario(Screen):
 
-    def _init_(self, **kwargs):
-        super(Login_usuario, self)._init_(**kwargs)
+    def __init__(self, **kwargs):
+        super(Login_usuario, self).__init__(**kwargs)
         self.app = MDApp.get_running_app()
 
     def cadastrar_usuario(self):
@@ -74,10 +73,9 @@ class Login_usuario(Screen):
         else:
             print('Erro: Preencha todos os campos.')
 
-#passo 3: fazer o cadastro do coletor 
 class Cadastro_coletor(Screen):
-    def _init_(self, **kwargs):
-        super(Cadastro_coletor, self)._init_(**kwargs)
+    def __init__(self, **kwargs):
+        super(Cadastro_coletor, self).__init__(**kwargs)
         self.app = MDApp.get_running_app()
 
     def cadastrar_coletor(self):
@@ -104,8 +102,8 @@ class Cadastro_coletor(Screen):
             print('Erro: Preencha todos os campos.')
 
 class Cadastro_usuario(Screen):
-    def _init_(self, **kwargs):
-        super(Cadastro_usuario, self)._init_(**kwargs)
+    def __init__(self, **kwargs):
+        super(Cadastro_usuario, self).__init__(**kwargs)
         self.app = MDApp.get_running_app()
 
     def cadastrar_usuario(self):
@@ -119,12 +117,9 @@ class Cadastro_usuario(Screen):
         bairro = self.ids.bairro.text
         email = self.ids.email_cadastro.text
         senha = self.ids.senha_cadastro.text
-        
-        
 
         if nome and email and senha and cpf_cnpj and genero and logadouro and bairro and estado and numero and tel :
             if self.app.cadastrar_usuario(nome, genero, cpf_cnpj, tel, logadouro, numero, estado, bairro, email, senha):
-                # Limpar os campos após o cadastro
                 self.ids.nome.text = ''
                 self.ids.genero.text = ''
                 self.manager.current = 'resistrar_usuario'
@@ -141,7 +136,6 @@ class Registro_usuario(Screen):
     def voltar_usuario(self):
         self.manager.current = 'login_usuario'
 
-#passo 4 fazer a tela inicial do coletor
 class Entrar_coletor(Screen):
     def tela_coletor(self):
         super(Entrar_coletor, self).on_enter()
@@ -160,17 +154,14 @@ class Entrar_coletor(Screen):
         self.manager.current = 'mensagens'
    
 class Entrar_usuario(Screen):
-    def _init_(self, **kwargs):
-        super(Entrar_usuario, self)._init_(**kwargs)
+    def __init__(self, **kwargs):
+        super(Entrar_usuario, self).__init__(**kwargs)
         self.nome_usuario = ""
-
-
     
     def tela_usuario(self):
         super(Entrar_usuario, self).on_enter()
         self.mapa_recife()
         
-
     def mapa_recife(self):
         mapview = self.ids.mapview
 
@@ -185,7 +176,6 @@ class Entrar_usuario(Screen):
         mapview.add_marker('Coleta 9')
         mapview.add_marker('Coleta 10')
         
-
     def menu(self):
         self.manager.current = 'menu_usuario'
 
@@ -266,11 +256,9 @@ class Perfil_do_coletor(Screen):
     def coletores_selecao(self):
         self.manager.current = 'chat_usuario'
 
-
 class Perfil_do_usuario(Screen):
     pass
 
-#passo 5: fazer o chat
 
 class Chat_usuario(Screen):
     pass
@@ -278,7 +266,6 @@ class Chat_usuario(Screen):
 class Chat_coletor(Screen):
     pass
 
-#passo 1: criar um caminho para cadastro ou login para o coletor
 class Inicial(Screen):
     def entrar_como_coletor(self):
         self.manager.current = 'login_coletor'
@@ -400,7 +387,6 @@ class ReciclatechApp(MDApp):
             for usuario in usuarios.values():
                 if usuario['email'] == email:
                     return True
-    # O email não está cadastrado
         return False
         
     def realizar_login(self):
@@ -419,5 +405,5 @@ class ReciclatechApp(MDApp):
         else:
             toast('Erro: Preencha todos os campos.')
       
-if _name_ == '_main_':
+if __name__ == '__main__':
     ReciclatechApp().run()
