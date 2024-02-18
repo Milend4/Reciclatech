@@ -5,8 +5,7 @@ from kivy.garden.mapview import MapMarker
 import pyrebase
 from kivymd.toast import toast
 from kivymd.app import MDApp
-from kivy.uix.label import Label
-from kivy.uix.boxlayout import BoxLayout
+
 
 
 firebaseConfig = {
