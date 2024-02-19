@@ -1,1 +1,2 @@
 É um aplicativo que tem como objetivo ser uma ponte entre aquele que quer descartar o seu lixo eletrônico e aquele que quer receber. Ele vai ter duas áreas, uma para o coletor e outra para o usuário que quer realizar o descarte. Tem algumas funções como mostrar os pontos de coleta de Recife e fazer um chat com o coletor ou usuário, facilitando o contado entre eles.
+Neste aplicativo foi usado a linguagem Python, Kivy e o Google Firebase como banco de dados.
