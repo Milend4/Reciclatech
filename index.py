@@ -27,8 +27,7 @@ db = firebase.database()
 Builder.load_file('ReciclatechApp.kv')
     
 Window.size = (430, 600)
-#passo 1: criar um caminho para cadastro ou login para o coletor
-#passo 2: fazer o login do coletor
+
 class Login_coletor(Screen):
 
     def __init__(self, **kwargs):
@@ -76,7 +75,7 @@ class Login_usuario(Screen):
         else:
             print('Erro: Preencha todos os campos.')
 
-#passo 3: fazer o cadastro do coletor 
+
 class Cadastro_coletor(Screen):
     def __init__(self, **kwargs):
         super(Cadastro_coletor, self).__init__(**kwargs)
@@ -141,7 +140,7 @@ class Registro_usuario(Screen):
     def voltar_usuario(self):
         self.manager.current = 'login_usuario'
 
-#passo 4 fazer a tela inicial do coletor
+
 class Entrar_coletor(Screen):
     mensagem = StringProperty("")
 
@@ -643,12 +642,12 @@ class ReciclatechApp(MDApp):
             toast('Erro: Preencha todos os campos.')
 
     def atualizar_usuario(self, email, novo_nome, novo_genero, novo_tel, logadouro_novo, numero_novo, estado_novo, bairro_novo):
-        # Primeiro, obtenha a chave do usuário com base no e-mail
+
         usuarios = self.db.child("schedule").get().val()
         if usuarios:
             for chave, usuario in usuarios.items():
                 if usuario['email'] == email:
-                    # Atualize os dados do usuário com os novos valores
+
                     self.db.child("schedule").child(chave).update({
                         'nome': novo_nome,
                         'genero': novo_genero,
